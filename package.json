@@ -1,0 +1,17 @@
+{
+  "name": "com.unity.singleton",
+  "version": "1.0.0",
+  "displayName": "Singleton",
+  "description": "This package contains wrapper to simplify Singleton creation of any type",
+  "unity": "2017.1",
+  "unityRelease": "0b5",
+  "keywords": [
+    "Singleton"
+  ],
+  "author": {
+    "name": "Valerii Dryl",
+    "email": "taurenvd@gmail.com",
+    "url": "https://www.unity3d.com"
+  },
+  "type": "module"
+}
