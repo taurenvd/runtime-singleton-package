@@ -68,7 +68,7 @@ public static T Instance
         }
         else
         {
-            Debug.Log($"<b>Singleton<{_type_name.Name}>.Awake</b> <color=red>Already has Instance({m_instance.name}), destroing duplicate {name}</color>");
+            Debug.Log($"<b>Singleton<{_type_name}>.Awake</b> <color=red>Already has Instance({m_instance.name}), destroing duplicate {name}</color>");
 
             Destroy(gameObject);
         }
