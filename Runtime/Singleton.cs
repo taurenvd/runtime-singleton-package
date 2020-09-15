@@ -4,11 +4,13 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     protected virtual bool DontDestroy => false;
 
-    protected static string pref_path = $"Prefs/Single/{typeof(T).Name}";
+    protected static string pref_path = $"Prefs/Single/{_type_name}";
 
     protected static T m_instance;
 
-    public static T Instance
+    static string _type_name = typeof(T).Name;
+
+public static T Instance
     {
         get
         {
@@ -22,7 +24,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             }
             else
             {
-                Debug.Log($"<b>Singleton.set_Instance</b> <color=red>Destroy other instance</color> ({typeof(T).Name})");
+                Debug.Log($"<b>Singleton.set_Instance</b> <color=red>Destroy other instance</color> ({_type_name})");
                 Destroy(value.gameObject);
             }
         }
@@ -45,7 +47,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
         if (!result)
         {
-            Debug.Log($"<b>Singleton<${nameof(T)}>.CreateInstance</b> <color=red>Failed to find on scene or load from path({pref_path}).</color>. Create Instance on scene or specify correct path to prefab in Resources");
+            Debug.Log($"<b>Singleton<${_type_name}>.CreateInstance</b> <color=red>Failed to find on scene or load from path({pref_path}).</color>. Create Instance on scene or specify correct path to prefab in Resources");
         }
 
         return result;
@@ -58,7 +60,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         if (m_instance == null)
         {
             Instance = GetComponent<T>();
-            name = typeof(T).Name;
+            name = _type_name;
             if (DontDestroy)
             {
                 DontDestroyOnLoad(gameObject);
@@ -66,7 +68,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
         else
         {
-            Debug.Log($"<b>Singleton<{nameof(T)}>.Awake</b> <color=red>Already has Instance({m_instance.name}), destroing duplicate {name}</color>");
+            Debug.Log($"<b>Singleton<{_type_name.Name}>.Awake</b> <color=red>Already has Instance({m_instance.name}), destroing duplicate {name}</color>");
 
             Destroy(gameObject);
         }
@@ -74,7 +76,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Reset() 
     {
-        name = typeof(T).Name;
+        name = _type_name;
         transform.position = Vector3.zero;
     }
 }
