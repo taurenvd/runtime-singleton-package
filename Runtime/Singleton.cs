@@ -22,11 +22,6 @@ public static T Instance
             {
                 m_instance = value;
             }
-            else if(m_instance != T.GetComponent<T>())
-            {
-                Debug.Log($"<b>Singleton.set_Instance</b> <color=red>Destroy other instance</color> ({_type_name})");
-                Destroy(value.gameObject);
-            }
         }
     }
 
@@ -70,7 +65,13 @@ public static T Instance
         {
             Debug.Log($"<b>Singleton<{_type_name}>.Awake</b> <color=red>Already has Instance</color>({m_instance.name}), destroing duplicate {name}");
 
-            Destroy(gameObject);
+
+
+            if (m_instance != GetComponent<T>())
+            {
+                Debug.Log($"<b>Singleton.set_Instance</b> <color=red>Destroy other instance</color> ({_type_name})");
+                Destroy(value.gameObject);
+            }
         }
     }
 
