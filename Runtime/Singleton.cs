@@ -22,7 +22,7 @@ public static T Instance
             {
                 m_instance = value;
             }
-            else
+            else if(m_instance != GetComponent<T>())
             {
                 Debug.Log($"<b>Singleton.set_Instance</b> <color=red>Destroy other instance</color> ({_type_name})");
                 Destroy(value.gameObject);
