@@ -58,7 +58,7 @@ public abstract class ScriptableSingleton<T> : ScriptableObject where T: Scripta
 #if ODIN_INSPECTOR
 	[Button,PropertySpace(50)]
 #elif !ODIN_INSPECTOR
-	[ContextMenu]
+	[ContextMenu("Check Instance")]
 #endif
 	void CheckInstanceInEditor()
 	{
