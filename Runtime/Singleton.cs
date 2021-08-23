@@ -8,9 +8,13 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected static T m_instance;
 
+    #region Properties
+
     static string _type_name => typeof(T).Name;
 
-public static T Instance
+    public static bool HasInstance => m_instance != null;
+    
+    public static T Instance
     {
         get
         {
@@ -24,6 +28,8 @@ public static T Instance
             }
         }
     }
+
+    #endregion
 
     public static T CreateInstance()
     {

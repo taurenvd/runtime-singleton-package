@@ -14,6 +14,9 @@ public abstract class ScriptableSingleton<T> : ScriptableObject where T: Scripta
 
 	#region Properties
 	public static T Instance => m_instance ?? Create();
+	
+	public static bool HasInstance => m_instance != null;
+	
 	#endregion
 
 	/// <summary>
