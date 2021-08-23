@@ -55,7 +55,7 @@ public abstract class ScriptableSingleton<T> : ScriptableObject where T: Scripta
 		}
 	}
 
-	public override string ToString() => $"<b>Instance<<color=green>{_type_name}</b></color>: {m_instance.name}>";
+	public override string ToString() => $"<b>Instance<<color=green>{_type_name}</color>></b>: {m_instance.name}>";
 
 #if UNITY_EDITOR
 #if ODIN_INSPECTOR
